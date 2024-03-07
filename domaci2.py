@@ -670,11 +670,107 @@ def jednocifreni_negativni(s):
 
 print(jednocifreni_negativni("2+3-2-32+4-22-44"))
 
-'''59. Napisati program koji za unijeti string s (karakteri stringa cifre od 0 do 9) enkriptuje na
-sledeći način: ako je karakter paran broj pretvara se u 0, a ako je karakter neparan broj
-pretvara se u 1. Npr. za s = ‘15023’ rezultat je 11001. Pomoć: Inicijalna vrijednost za
-dodatni string je “”, a onda se pomoću operatora + nadodaje 0 ili 1 u zavisnosti u
-ispunjenosti uslova.
+#60.
+def gen_segment():
+    start = int(input("Unesite start: "))
+    kraj = int(input("Unesite kraj: "))
 
+    suma = 0
+    for i in range(start, kraj):
+        if i % 3 == 0 and i % 6 != 0:
+            suma += i**2
 
-        
+    return suma
+
+#61.
+def get_upper(string):
+    novi = ""
+
+    for i in string:
+        if i.isupper():
+            novi += i
+
+    print(novi)
+
+get_upper("Prva recenica. Ovo je druga recenica. Na kraju treca.")
+
+#62.
+def get_hexa(string):
+
+    tokens = string.split(" ")
+    br = 0
+
+    for i in tokens:
+        if i[0:2] == "0x":
+            br += 1
+
+    return br
+
+print(get_hexa("12 0x1A 0001 121 0x2"))
+
+#63. 
+def najuza_rijec(string):
+
+    tokens = string.split(" ")
+    maks = tokens[0]
+
+    for i in tokens:
+        if(len(i) > len(maks)):
+            maks = i
+
+    return maks
+
+print(najuza_rijec("Milicaaaa milica hyyyyyyyyyyyy"))
+
+#64. 
+def suma_max_min(broj):
+    najmanji = 9
+    najveci = 0
+    broj1 = broj
+
+    while(broj != 0):
+        c = broj % 10
+        broj //= 10
+        if c > najveci:
+            najveci = c
+
+    while(broj1 != 0):
+        c = broj1 % 10
+        broj1 //= 10
+        if c < najmanji:
+            najmanji = c
+            
+    return najmanji + najveci
+
+print(suma_max_min(123456789))
+
+#67.
+def ponavljanje(lista, broj):
+
+    suma = 0
+    for i in lista:
+        if i == broj:
+            suma += 1
+
+    return suma
+
+print(ponavljanje([3, 3, 3, 67, 889, 333], 3))
+
+#68.
+def uvecaj_zarade(lista, x):
+    prosjek = 0
+    n = len(lista)
+    suma = 0
+
+    for i in lista:
+        suma += i
+
+    prosjek = suma / n
+
+    for i in range(0, n):
+        if(lista[i] > prosjek):
+            lista[i] += x
+
+    return lista
+
+print(uvecaj_zarade([500, 600, 750, 900], 100))
