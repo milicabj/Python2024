@@ -773,7 +773,6 @@ def uvecaj_zarade(lista, x):
 
     return lista
 
-<<<<<<< HEAD
 print(uvecaj_zarade([500, 600, 750, 900], 100))
 
 #70. 
@@ -907,6 +906,62 @@ def putovanje(cijene, budzet):
 
     print(f"Cijena dest: {cijene[pom]}, ostatak novca: {budzet - cijene[pom]}")
 putovanje([700, 20000, 670, 501], 750)
-=======
-print(uvecaj_zarade([500, 600, 750, 900], 100))
->>>>>>> e50137bf1af71aaacd0703f88224778c1c3b3b0f
+
+#95.
+def longest_increasing(lista):
+    poc = 0
+    max_duzina = 0
+    tren_duzina = 0
+
+    for i in range(len(lista) -1):
+        if(lista[i] <= lista[i+1] and (lista[i] > 0 and lista[i+1] > 0)):
+            tren_duzina += 1
+            if tren_duzina > max_duzina:
+                max_duzina = tren_duzina
+                poc = i - tren_duzina + 1
+        else:
+            tren_duzina = 0
+
+    return lista[poc:poc+max_duzina+1]
+
+print(longest_increasing([1, 2, 3, -1, 0, 5, 6, 7, 10, 10, 1]))
+
+#102.
+def vrata(n):
+    
+    lista = [False for i in range(n+1)]
+    suma = 0
+    for i in range(1, n+1):
+        for j in range(i, n+1):
+            if j % i == 0:
+                if(lista[j] == False):
+                    lista[j] = True
+                else:
+                    lista[j] = False
+
+    for i in range(1, n+1):
+        if lista[i] == True:
+            suma += 1
+
+    return suma
+
+print(vrata(5))
+
+#94.
+def get_even(string, d):
+
+    tokens = string.split(" ")
+
+    for i in tokens:
+        if len(i) % 2 == 0 and i.count(d) == 0:
+            print(i)
+
+get_even("words with even number of letters without character d", "d")
+
+#91.
+def second_greatest(lista):
+
+    sortirana = sorted(lista)
+    return sortirana[-2]
+
+print(second_greatest([1, 22, 33]))
