@@ -773,6 +773,7 @@ def uvecaj_zarade(lista, x):
 
     return lista
 
+<<<<<<< HEAD
 print(uvecaj_zarade([500, 600, 750, 900], 100))
 
 #70. 
@@ -906,3 +907,6 @@ def putovanje(cijene, budzet):
 
     print(f"Cijena dest: {cijene[pom]}, ostatak novca: {budzet - cijene[pom]}")
 putovanje([700, 20000, 670, 501], 750)
+=======
+print(uvecaj_zarade([500, 600, 750, 900], 100))
+>>>>>>> e50137bf1af71aaacd0703f88224778c1c3b3b0f
