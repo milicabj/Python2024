@@ -774,3 +774,135 @@ def uvecaj_zarade(lista, x):
     return lista
 
 print(uvecaj_zarade([500, 600, 750, 900], 100))
+
+#70. 
+def vrati_zbir(lista):
+    suma = 0
+
+    for i in lista:
+        if i % 3 == 0:
+            suma += i**2
+
+    return suma
+
+print(vrati_zbir([1, 2, 3, 6, 9]))
+
+#71.
+def  analyze_list(lista):
+    br = 0
+
+    for i in lista:
+        if(math.sqrt(i).is_integer()):
+            br += 1
+
+    return br
+
+print(analyze_list([2, 3, 4, 9, 25, 36, 1, 7]))
+
+#72.
+def above_average(lista):
+    suma = 0
+    n = len(lista)
+    br = 0
+
+    for i in lista:
+        if(i != 5):
+            suma += i
+
+    prosjecna = suma // n
+
+    for o in lista:
+        if(o > prosjecna):
+            br += 1
+
+    return br
+    
+#73.
+def rpg(inventar, poz):
+    if(poz > 0 and poz < len(inventar)):
+       return inventar[poz]
+
+#74.
+def convert(lista):
+    suma_dollars = 0
+
+    for i in lista:
+        suma_dollars += i * 1.1
+
+    average_sallary = suma_dollars / len(lista)
+
+    return average_sallary
+
+#76.
+def replace_occurance(lista, x, y):
+    
+    for i in range(0, len(lista)):
+        if(lista[i] == x):
+            lista[i] = y
+
+    return lista
+
+#77. 
+def is_ascending(lista):
+    
+    for i in range(0, len(lista)-1):
+        if(lista[i] > lista[i+1]):
+            return False
+            break
+
+    return True
+
+print(is_ascending([1, 2, 3, 4, 15]))
+
+#78.
+def drugi_najskuplji(lista):
+    sortirana = sorted(lista)
+    return sortirana[-2]
+
+print(drugi_najskuplji([128, 670, 900, 445]))
+
+#79.
+def suprotna_vrijednost(lista):
+    broj_elem = 0
+
+    for i in range(len(lista)-1):
+        for j in range(i+1, len(lista)):
+            if(lista[i] == -lista[j]):
+                broj_elem += 1
+                break
+            
+    return broj_elem
+
+print(suprotna_vrijednost([2, 3, 5, 6, -2, -5]))
+
+#80.
+def difference(duzine):
+    najveci = max(duzine)
+    najmanji = min(duzine)
+
+    return najveci - najmanji
+
+#82. 
+def najbolji_red(lista, n):
+    naj = 0
+    
+    for i in range(1, len(lista)):
+        if(lista[i] - n > lista[naj] - n):
+            naj = i
+
+    return lista[naj]
+
+print(najbolji_red([10, 8, 15, 12, 7], 10))
+
+#83. najmanje novca da ostane ali da je iznos >= 0
+def putovanje(cijene, budzet):
+   
+    pom = 0
+
+    for i in range(1, len(cijene)):
+        if(cijene[i] > cijene[pom]):
+            if cijene[i] <= budzet:
+                pom = i
+
+    print(f"Cijena dest: {cijene[pom]}, ostatak novca: {budzet - cijene[pom]}")
+putovanje([700, 20000, 670, 501], 750)
