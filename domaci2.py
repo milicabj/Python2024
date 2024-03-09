@@ -965,3 +965,50 @@ def second_greatest(lista):
     return sortirana[-2]
 
 print(second_greatest([1, 22, 33]))
+
+#90.
+def update_list(a, x):
+
+    for i in range(len(a)):
+        if a[i] % 2 == 0:
+            a[i] += x
+
+    return a
+
+print(update_list([21, 10, -10, 100], 5))
+
+#88.
+def br_elemenata(a, max):
+    br = 0
+    for i in range(len(a)):
+        if a[i] < max:
+            br += 1
+
+    return br
+
+print(br_elemenata([2, 3, 4], 7))
+
+#87. presjek zaj elem
+def presjek(a, b):
+    skup_a = set(a)
+    skup_b = set(b)
+
+    print(skup_a & skup_b)
+
+presjek([1, 2, "a"], [2, "a"])
+
+'''86. Napisati program absolute_of_even_sum koji ima jedan parametar, niz cijelih brojeva,
+a koja računa apsolutnu sumu svih negativnih parnih elemenata za unijeti niz. Štampati
+sumu.
+Input: [-2, 7, -5, 3, 1, -4] Output: 6 (|-2| + |-4|)
+'''
+def absolute_of_even_sum(a):
+    suma = 0
+    for i in range(len(a)):
+        if a[i] < 0 and a[i] % 2 == 0:
+            suma += abs(a[i])
+
+    
+    return suma
+
+print(absolute_of_even_sum([-2, 7, -5, 3, 1, -4]))
