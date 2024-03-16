@@ -22,6 +22,30 @@ def ends_with(string, s):
 
 ends_with("Print only the words that end with the chosen letter in those sentences. Example can contains one or more sentences.", "s")
 
+#2.
+def najduza_sekvenca(niz):
+
+    proizvod = 1
+    max_proizvod = 1
+    sekv = []
+    max_sekv = []
+
+    for i in range(len(niz)):
+        for j in range(i+1, len(niz)):
+            proizvod = niz[i]
+            if(niz[j] == niz[i]):
+                sekv = niz[i:j+1]
+                proizvod *= niz[j]
+                if proizvod > max_proizvod:
+                    max_proizvod = proizvod
+                    max_sekv = sekv
+            else:
+                sekv.clear()   
+
+    return max_sekv, max_proizvod
+
+print(najduza_sekvenca([1, 2, 2, 4, 4]))
+
 #4.
 def preklapanje(string):
     br = 0
@@ -493,7 +517,7 @@ class AlphaColor(Color):
         string = super().__str__() + " alpha: " + str(self.get_alpha())
         return string
     
-
+'''
 c1 = Color(255, 234, 0)
 c2 = Color(0, 0, 0)
 c3 = Color(255, 234, 0)
@@ -503,6 +527,77 @@ print(a1.__str__())
 
 print(c1.__lt__(c2))
 print(c1.__eq__(c3))
+'''
+class Company:
+    def __init__(self, name, area, balance, max_num):
+        self._name = name
+        self._area = area
+        self._employees = []
+        self._balance = balance
+        self._max_num = max_num
+
+    def set_name(self, name):
+        self._name = name
+    
+    def get_name(self):
+        return self._name
+    
+    def set_area(self, area):
+        self._area = area
+    
+    def get_area(self):
+        return self._area
+    
+    def set_balance(self, balance):
+        if balance > 0:
+            self._balance = balance
+        else:
+            return "Neispravan unos!"
+    
+    def get_balance(self):
+        return self._balance
+    
+    def set_maxnum(self, max_num):
+        if max_num > 0:
+            self._max_num = max_num
+        else:
+            return "Neispravan unos!"
+    
+    def get_max_num(self):
+        return self._max_num
+    
+    def add_employee(self, employee):
+        if len(self._employees) + 1 <= self._get_max_num():
+            self._employees.append(employee)
+        else:
+            return "Nema mjesta za novog radnika!"
+    
+    def remove_employee(self, employee_name, employee_surname):
+        for employee in self._employees:
+            if employee['name'] == employee_name and employee['surname'] == employee_surname:
+                self._employees.remove(employee)
+                return True
+        
+        return False
+    
+    def __str__(self):
+
+        string = "name: " + str(self.get_name()) + "area: " + str(self._get_area()) + "balance: " + str(self._get_balance())
+
+        return string
+    
+    def __gt__(self, comp):
+
+        if len(self._employees) > len(copm._employees):
+            return True
+        else:
+            return False
+        
+
+        
+    
+    
+
     
 
     
