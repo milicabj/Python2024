@@ -170,7 +170,7 @@ class Book:
     def stampaj(self):
         return f"Naslov: {self._naslov}, autor: {self._autor}, god. izd: {self._god_izdanja}, br. kopija: {self._broj_kopija}"
 
-class Library(Book):
+class Library:
 
     def __init__(self):
         self._lista_knjiga = []
@@ -396,5 +396,119 @@ class Turnir:
 
         najbolji = max(self.lista_igraca, key=lambda x: x[1])
         return najbolji[0]
+    
+#10.
+class Color:
+    def __init__(self, red, green, blue):
+        self._red = red
+        self._green = green
+        self._blue = blue
+
+    def set_red(self, red):
+        if red >= 0 and red <= 255:
+            self._red = red
+        else:
+            return "Neispravan unos!"
+        
+    def set_green(self, green):
+        if green >= 0 and green <= 255:
+            self._green = green
+        else:
+            return "Neispravan unos!"
+    
+    def set_blue(self, blue):
+        if blue >= 0 and blue <= 255:
+            self._blue = blue
+        else:
+            return "Neispravan unos!"
+        
+    def get_red(self):
+        return self._red
+    
+    def get_green(self):
+        return self._green
+
+    def get_blue(self):
+        return self._blue
+    
+    def add_red(self, change):
+        if change > 0:
+            self.set_red(self.get_red() + change)
+        else:
+            self.set_red(self.get_red() - change)
+
+    def add_green(self, change):
+        if change > 0:
+            self.set_green(self.get_green() + change)
+        else:
+            self.set_green(self.get_green() - change)
+    
+    def add_blue(self, change):
+        if change > 0:
+            self.set_blue(self.get_blue() + change)
+        else:
+            self.set_blue(self.get_blue() - change)
+    
+    def __lt__(self, color2):
+
+        if self.get_red() < color2.get_red() and self.get_green() < color2.get_green() and self.get_blue() < color2.get_blue():
+            return True
+        else:
+            return False
+        
+    def __eq__(self, color2):
+        if self.get_red() == color2.get_red() and self.get_green() == color2.get_green() and self.get_blue() == color2.get_blue():
+            return True
+        else:
+            return False
+        
+    def __str__(self):
+
+        string = "red: " + str(self.get_red ())+ " green: " + str(self.get_green()) + " blue: " + str(self.get_blue())
+        return string
+    
+#11.
+class AlphaColor(Color):
+    def __init__(self, red, green, blue, alpha):
+        super().__init__(red, green, blue)
+        self._alpha = alpha
+    
+    def set_alpha(self, alpha):
+        if isinstance(alpha, float) and alpha >= 0 and alpha <= 1:
+            self._alpha = alpha
+        else:
+            return "Neispravan unos!"
+        
+    def get_alpha(self):
+        return self._alpha
+
+    def update_color_by_alpha(self, alpha):
+        self.set_red(self.get_red() - self.get_red() * alpha)
+        self.set_green(self.get_green() - self.get_green() * alpha)
+        self.set_blue(self.get_blue() - self.get_blue() * alpha)
+
+        return self
+    
+    def __str__(self):
+        string = super().__str__() + " alpha: " + str(self.get_alpha())
+        return string
+    
+
+c1 = Color(255, 234, 0)
+c2 = Color(0, 0, 0)
+c3 = Color(255, 234, 0)
+a1 = AlphaColor(15, 155, 46, 0.3)
+a1.update_color_by_alpha(0.6)
+print(a1.__str__())
+
+print(c1.__lt__(c2))
+print(c1.__eq__(c3))
+    
+
+    
+
+        
+    
+
     
 
